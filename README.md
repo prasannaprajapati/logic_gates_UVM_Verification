@@ -1,28 +1,33 @@
 # Logic Gates UVM Verification
 
-This repository contains a complete UVM-based verification environment for basic logic gates (AND, OR, XOR, NAND, NOR, XNOR). The testbench is designed to verify the functionality of all logic operations and provide comprehensive coverage.
-
+This repository contains a complete UVM-based verification environment for basic logic gates (AND, OR, XOR, NAND, NOR, XNOR, NOT, BUFFER). The testbench is designed to verify the functionality of all logic operations and provide comprehensive coverage.
+## UVM TB
+![Alt text](/images/screenshot.png)
 ## Project Structure
 
 ```
 logic_gates_uvm/
 ├── rtl/
 │   └── logic_gates.sv
-├── tb/
-│   ├── logic_gates_pkg.sv
-│   ├── logic_gates_if.sv
-│   ├── logic_gates_transaction.sv
-│   ├── logic_gates_sequence.sv
-│   ├── logic_gates_sequencer.sv
-│   ├── logic_gates_driver.sv
-│   ├── logic_gates_monitor.sv
-│   ├── logic_gates_scoreboard.sv
-│   ├── logic_gates_agent.sv
-│   ├── logic_gates_env.sv
-│   └── logic_gates_test.sv
+│   └── gate_if.sv 
+├── agent_top/
+│   ├── seq_item.sv
+│   ├── base_seqs.sv
+│   ├── sequencer.sv
+│   ├── driver.sv
+│   ├── monitor.sv
+│   ├── scoreboard.sv
+│   └──agent.sv
 └── sim/
-    ├── run.do
-    └── Makefile
+│    └── Makefile
+└── test/
+│     ├── base_test.sv
+│     └──gate_pkg.sv
+└── tb/
+    ├── env.sv
+    ├── scoreboard.sv
+    └── top.sv
+
 ```
 
 ## Components Description
@@ -34,42 +39,31 @@ The DUT implements six basic logic gates:
 - XOR gate
 - NAND gate
 - NOR gate
-- XNOR gate
-
-```systemverilog
-module logic_gates (
-    input  logic a, b,
-    output logic and_out,
-    output logic or_out,
-    output logic xor_out,
-    output logic nand_out,
-    output logic nor_out,
-    output logic xnor_out
-);
-```
+- NOT gate
+- BUFFER gate
 
 ### UVM Components
 
-#### 1. Transaction Class (logic_gates_transaction.sv)
+#### 1. Transaction Class (seq_item.sv)
 - Defines the transaction items containing input and output signals
 - Implements randomization for input signals
 - Includes UVM field macros for automation
 
-#### 2. Sequence (logic_gates_sequence.sv)
+#### 2. Sequence (sequence.sv)
 - Generates random test scenarios
 - Implements specific test cases for corner cases
 - Controls the stimulus generation flow
 
-#### 3. Driver (logic_gates_driver.sv)
+#### 3. Driver (driver.sv)
 - Converts transaction-level items to pin-level signals
 - Drives the DUT interface according to the protocol
 
-#### 4. Monitor (logic_gates_monitor.sv)
+#### 4. Monitor (monitor.sv)
 - Samples the DUT interface
 - Converts pin-level activity to transaction-level items
 - Sends transactions to scoreboard for verification
 
-#### 5. Scoreboard (logic_gates_scoreboard.sv)
+#### 5. Scoreboard (scoreboard.sv)
 - Implements the reference model
 - Compares DUT output with expected results
 - Reports any mismatches or errors
