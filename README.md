@@ -1,8 +1,7 @@
 # Logic Gates UVM Verification
 
 This repository contains a complete UVM-based verification environment for basic logic gates (AND, OR, XOR, NAND, NOR, XNOR, NOT, BUFFER). The testbench is designed to verify the functionality of all logic operations and provide comprehensive coverage.
-## UVM TB
-![Alt text](/images/logic_gate_UVM_tb.png)
+
 ## Project Structure
 
 ```
@@ -30,17 +29,18 @@ logic_gates_uvm/
 
 ```
 
-## Components Description
+## UVM TB
+![Image Alt Text](logic_gate_UVM_tb.png)
 
-### RTL Design (logic_gates.sv)
-The DUT implements six basic logic gates:
-- AND gate
-- OR gate
-- XOR gate
-- NAND gate
-- NOR gate
-- NOT gate
-- BUFFER gate
+## Mode Definitions
+- Mode 0: AND Gate
+- Mode 1: OR Gate
+- Mode 2: XOR Gate
+- Mode 3: NAND Gate
+- Mode 4: NOR Gate
+- Mode 5: XNOR Gate
+- Mode 6: BUF Gate
+- Mode 7: NOT Gate
 
 ### UVM Components
 
@@ -84,78 +84,8 @@ The DUT implements six basic logic gates:
    - 100% code coverage of RTL
    - Toggle coverage of all signals
 
-## Coverage Metrics
-
-The testbench implements the following coverage points:
-
-```systemverilog
-covergroup logic_gates_cg;
-    a_cp: coverpoint tr.a;
-    b_cp: coverpoint tr.b;
-    gates_cross: cross a_cp, b_cp;
-endgroup
-```
-
 ## Running Tests
 
-1. **Prerequisites**
-   - UVM 1.2 or later
-   - SystemVerilog compatible simulator
-   - Make utility
-
-2. **Simulation Commands**
-```bash
-# Clean previous results
-make clean
-
-# Run all tests
-make run
-
-# Run specific test
-make run TEST=logic_gates_basic_test
-```
-
-3. **Viewing Results**
-   - Coverage reports are generated in `./sim/coverage`
-   - Logs are available in `./sim/logs`
-   - Waveforms are saved in `./sim/waves`
-
-## Example Test Output
-
-```
-UVM_INFO: Running test logic_gates_basic_test...
-UVM_INFO: Generating 1000 random transactions...
-UVM_INFO: Coverage reached: 100%
-UVM_INFO: All tests passed successfully!
-UVM_INFO: Test completed with 0 errors
-```
-
-## Advanced Features
-
-1. **Error Injection**
-   - Capability to inject errors for negative testing
-   - Verification of error detection mechanisms
-
-2. **Performance Metrics**
-   - Simulation time tracking
-   - Coverage progression analysis
-
-3. **Debug Features**
-   - Transaction recording
-   - Signal tracing
-   - UVM messaging system utilization
-
-## Common Issues and Solutions
-
-1. **Compilation Issues**
-   - Ensure proper UVM installation
-   - Check package imports
-   - Verify SystemVerilog compiler settings
-
-2. **Runtime Issues**
-   - Enable UVM_INFO messages for debugging
-   - Check phase transitions
-   - Verify configuration settings
 
 ## Contributing
 
@@ -164,10 +94,6 @@ UVM_INFO: Test completed with 0 errors
 3. Commit your changes
 4. Push to the branch
 5. Create a new Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Contact
 
