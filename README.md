@@ -2,7 +2,7 @@
 
 This repository contains a complete UVM-based verification environment for basic logic gates (AND, OR, XOR, NAND, NOR, XNOR, NOT, BUFFER). The testbench is designed to verify the functionality of all logic operations and provide comprehensive coverage.
 ## UVM TB
-![Alt text](/images/screenshot.png)
+![Alt text](/images/logic_gate_UVM_tb.png)
 ## Project Structure
 
 ```
