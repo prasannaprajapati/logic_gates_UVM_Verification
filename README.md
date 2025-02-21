@@ -84,17 +84,15 @@ logic_gates_uvm/
    - 100% code coverage of RTL
    - Toggle coverage of all signals
 
-## Running Tests
 
+## Requirements
+1. QuestaSim/ModelSim for simulation
+2. UVM 1.2 or later
+3. SystemVerilog supported simulator
+4. VCS/Questa verification platforms
 
 ## Contributing
 
-1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a new Pull Request
-
-## Contact
-
-For any queries or support, please open an issue in the repository.
+1. SystemVerilog community members
+2. Open source verification resources
+3. UVM resources
